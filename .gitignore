@@ -22,4 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/Users/sachins/Desktop/APP/DONNA/donna/src/firebase.js
+# Firebase config
+src/firebase.js
