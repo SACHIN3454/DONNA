@@ -1,12 +1,26 @@
 import React, { useState } from "react";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 function TaskCreator({ onCreate }) {
   const [title, setTitle] = useState("");
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     if (title.trim()) {
-      onCreate({ title });
-      setTitle("");
+      const task = {
+        title,
+        date: new Date().toISOString(),
+        status: "pending"
+      };
+
+      try {
+        await addDoc(collection(db, "tasks"), task);
+        console.log("✅ Task added:", task);
+        onCreate(task); // still calls parent state update
+        setTitle("");
+      } catch (error) {
+        console.error("❌ Failed to add task:", error);
+      }
     }
   };
 

@@ -9,20 +9,43 @@ function ExpenseForm({ onAdd }) {
 
   const handleSubmit = async () => {
     if (amount && category) {
-      const expense = { amount: parseFloat(amount), category, note, date: new Date().toISOString() };
-      await addDoc(collection(db, "expenses"), expense);
-      onAdd(expense);
-      setAmount("");
-      setCategory("");
-      setNote("");
+      const expense = {
+        amount: parseFloat(amount),
+        category,
+        note,
+        date: new Date().toISOString(),
+      };
+
+      try {
+        await addDoc(collection(db, "expenses"), expense);
+        console.log("✅ Expense added:", expense);
+        onAdd(expense);
+        setAmount("");
+        setCategory("");
+        setNote("");
+      } catch (error) {
+        console.error("❌ Failed to add expense:", error);
+      }
     }
   };
 
   return (
     <div>
-      <input placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
-      <input placeholder="Category" value={category} onChange={(e) => setCategory(e.target.value)} />
-      <input placeholder="Note (optional)" value={note} onChange={(e) => setNote(e.target.value)} />
+      <input
+        placeholder="Amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+      <input
+        placeholder="Category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      />
+      <input
+        placeholder="Note (optional)"
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+      />
       <button onClick={handleSubmit}>Add Expense</button>
     </div>
   );

@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Make sure these are pointing to the right pages
 import HomePage from "./pages/HomePage";
 import CalendarPage from "./pages/CalendarPage";
 import ExpensesPage from "./pages/ExpensesPage";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/expenses" element={<ExpensesPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </Router>
   );
