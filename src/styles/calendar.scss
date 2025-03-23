@@ -69,3 +69,19 @@
     color: white;
   }
 }
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  button {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    border: none;
+    background: #fbab57;
+    color: #222;
+    cursor: pointer;
+  }
+}
