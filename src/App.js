@@ -1,20 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-import HomePage from "./pages/HomePage";
+import DashboardPage from "./pages/DashboardPage";
 import CalendarPage from "./pages/CalendarPage";
 import ExpensesPage from "./pages/ExpensesPage";
-import DashboardPage from "./pages/DashboardPage";
+import DarkModeToggle from "./components/DarkModeToggle";
 
-function App() {
+function App({ darkMode, setDarkMode }) {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/calendar" element={<CalendarPage />} />
-        <Route path="/expenses" element={<ExpensesPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-      </Routes>
+      <div style={{ padding: "1rem" }}>
+        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Routes>
+          <Route path="/" element={<DashboardPage />} /> {/* Dashboard is landing */}
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/expenses" element={<ExpensesPage />} />
+        </Routes>
+        <ToastContainer position="top-right" autoClose={2000} />
+      </div>
     </Router>
   );
 }

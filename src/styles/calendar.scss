@@ -1,0 +1,71 @@
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 1rem;
+}
+
+.day-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.calendar-cell {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.day-number {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.task-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.9rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.option-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+
+  button {
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    background: #f3f3f3;
+    border: none;
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: #fbab57;
+    color: white;
+  }
+}

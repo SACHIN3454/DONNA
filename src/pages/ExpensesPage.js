@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ExpenseForm from "../components/ExpenseForm";
-import ExpenseList from "../components/ExpenseList";
-import ExpenseChart from "../components/ExpenseChart";
+import ExpenseInput from "../components/ExpenseInput";
+import ExpenseChart from "../components/ExpenseChart"; // ✅ fixed import
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -17,15 +16,14 @@ const ExpensesPage = () => {
     fetchExpenses();
   }, []);
 
-  const handleAdd = (expense) => {
-    setExpenses((prev) => [...prev, expense]);
+  const handleAdd = (newExpense) => {
+    setExpenses((prev) => [...prev, newExpense]);
   };
 
   return (
     <div>
-      <h2>💰 Expense Tracker</h2>
-      <ExpenseForm onAdd={handleAdd} />
-      <ExpenseList expenses={expenses} />
+      <h2>💰 Smart Expense Tracker</h2>
+      <ExpenseInput onAdd={handleAdd} />
       <ExpenseChart data={expenses} />
     </div>
   );

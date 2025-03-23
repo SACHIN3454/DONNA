@@ -1,21 +1,10 @@
-import React, { useState } from "react";
-import TaskCreator from "../components/TaskCreator";
-import CalendarView from "../components/CalendarView";
+import React from "react";
+import CustomCalendar from "../components/CustomCalendar";
 
-const CalendarPage = () => {
-  const [tasks, setTasks] = useState([]);
-
-  const handleCreate = (task) => {
-    setTasks((prev) => [...prev, task]);
-  };
-
-  return (
-    <div>
-      <h2>📅 Calendar Task Planner</h2>
-      <TaskCreator onCreate={handleCreate} />
-      <CalendarView tasks={tasks} />
-    </div>
-  );
-};
+const CalendarPage = () => (
+  <div>
+    <CustomCalendar />
+  </div>
+);
 
 export default CalendarPage;

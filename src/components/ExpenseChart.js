@@ -1,10 +1,17 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from "chart.js";
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale);
 
-const ExpenseChart = ({ data }) => {
+const ExpenseChart = ({ data = [] }) => {
+  if (!data.length) return <p style={{ marginTop: "1rem" }}>No expense data to display.</p>;
+
   const chartData = {
     labels: data.map((e) => e.category),
     datasets: [

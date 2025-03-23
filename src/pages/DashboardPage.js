@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
+// Import the new components
+import MoodTracker from "../components/MoodTracker";
+import WeeklyStats from "../components/WeeklyStats";
+
 const DashboardPage = () => {
   const [greeting, setGreeting] = useState("");
   const [taskCount, setTaskCount] = useState(0);
@@ -21,7 +25,7 @@ const DashboardPage = () => {
 
     const fetchExpenses = async () => {
       const snap = await getDocs(collection(db, "expenses"));
-      const total = snap.docs.reduce((sum, doc) => sum + parseFloat(doc.data().amount), 0);
+      const total = snap.docs.reduce((sum, doc) => sum + parseFloat(doc.data().amount || 0), 0);
       setExpenseTotal(total);
     };
 
@@ -49,7 +53,7 @@ const DashboardPage = () => {
 
         <div className="card mood">
           <h3>😊 Mood Tracker</h3>
-          <p>(Coming Soon)</p>
+          <MoodTracker />
         </div>
 
         <div className="card quick">
@@ -58,6 +62,9 @@ const DashboardPage = () => {
           <Link to="/expenses" className="btn small">+ Add Expense</Link>
         </div>
       </div>
+
+      {/* Weekly task statistics below */}
+      <WeeklyStats />
     </div>
   );
 };
